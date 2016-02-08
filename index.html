@@ -4,7 +4,7 @@
 	<head>
 		<meta charset="utf-8">
 
-		<title>RVA Data Hackers Presentation</title>
+		<title>Introduction to Apache Spark</title>
 
 		<meta name="description" content="A framework for easily creating beautiful presentations using HTML">
 		<meta name="author" content="Hakim El Hattab">
@@ -43,7 +43,7 @@
 			<div class="slides">
 				<section>
 					<img src="img/spark-logo.png" style="width: 600px; border: none; box-shadow: none;">
-					<h3>Abstract Title</h3>
+					<h2>Abstract Title</h2>
 					<p>
 						<small><a href="https://www.linkedin.com/in/mylesdanielbaker">Myles Baker / </a> <a href="http://www.captechconsulting.com/careers/why-captech">CapTech Consulting</a> / <a href="http://twitter.com/mydpy">@mydpy</a></small>
 						<br><small>Prabha Raman / <a href="https://www.capitalone.com/">Capital One</a> / <a href="http://twitter.com/twitter_handle">@twitter_handle</a></small>
@@ -54,156 +54,389 @@
 					<img src="img/captech.png" style="width: 600px; border: none; box-shadow: none;">
                     <img src="img/capital_one.jpg" style="width: 600px; border: none; box-shadow: none;">
 				</section>
+                
 
 				<section>
-					<img src="img/bigdata-ven.png" style="width: 600px; border: none; box-shadow: none;">
+					<section>
+						<h2>What is Spark?</h2>
+					</section>
+
+					<section>
+                        <h3><a href="https://spark.apache.org">Apache Spark</a> is a cluster computing platform designed to be <i>fast</i> and <i>general-purpose</i></h3>
+                        
+                        <ul>
+						<li><i>In-memory</i> computing capabilities deliver speed</li>
+                        <li>General execution model supports many diverse use cases</li>
+                        <li>Native APIs in Java, Scala, Python</li>
+                        <li>Supports batch and real-time analysis</li>
+                        </ul>
+					</section>
+                    <section>
+                        <img src="img/logo-java.png" style="width: 400px; border: none; box-shadow: none;">
+                        <img src="img/scala-logo.png" style="width: 400px; border: none; box-shadow: none;">
+                        <img src="img/python-logo-master.png" style="width: 400px; border: none; box-shadow: none;">
+                    </section>
+					<section>
+						<img src="img/spark-stack.png" style="width: 600px; border: none; box-shadow: none;">
+					</section>
 				</section>
-
 				<section>
+                    <section>
+                        <h2>Why Spark?</h2>
+                    </section>
+                    <section>
+                        <h3>Spark is quickly becoming popular</h3>
+                        <iframe scrolling="no" style="border:none;" width="600" height="400" src="http://www.google.com/trends/fetchComponent?hl=en-US&q=apache+spark,+apache+hadoop&date=1/2010+65m&cmpt=q&tz&tz&content=1&cid=TIMESERIES_GRAPH_AVERAGES_CHART&export=5&w=600&h=400"></iframe>
+                    </section>
 					<section>
 						<img src="img/hadoop-logo.jpeg" style="width: 600px; border: none; box-shadow: none;">
 						<img src="img/map-reduce.png" style="width: 900px; border: none; box-shadow: none;">
 					</section>
 					<section>
-						<h2>This paradigm unlocks intelligence on your data not previously possible.</h2>
+						<h3>This paradigm unlocks intelligence on your data not previously possible</h3>
+                        <h4>...but is designed for batch applications. What about real-time?</h4>
 					</section>
 					<section>
-						<h3>But by definition is run in batch.</h3>
-						<img src="img/resourcemanager-ui-hd2.png" style="width: 900px; border: none; box-shadow: none;">
+						<h3>...that requires special tools and imposes resource demands</h3>
+						<img src="img/spark-vs-hadoop.png" style="width: 800px; border: none; box-shadow: none;">
 					</section>
-					<section>
-						<h3>Is that really a solution for velocity?</h3>
-						<img src="img/bigdata-ven.png" style="width: 400px; border: none; box-shadow: none;">
-					</section>
-					<section>
-						<h2>Probably not.</h2>
-						<img src="img/not-bigdata.png" style="width: 400px; border: none; box-shadow: none;">
-					</section>
+                    <section>
+                        <h3>How fast is Spark?</h3>
+                        <ul>
+                            <li>3x as fast</li>
+                            <li>10x fewer machines</li>
+                        </ul>
+                        <img src="img/spark-100tb.png" style="width: 800px; border: none; box-shadow: none;">
+                    </section>
+                    <section>
+                        <h3>...but may not replace Hadoop yet</h3>
+                        <ul>
+                            <li>Hadoop may be better if data spills into memory</li>
+                            <li>Spark staffing can be more costly than Hadoop</li>
+                            <li>Spark security is in its infancy</li>
+                        </ul>
+                    </section>
 				</section>
 
-				<section>
+                <section>
+                    <section>
+                        <h2>How does Spark work?</h2>
+                    </section>
 					<section>
-						<h2>Lambda Architecture</h2>
-						<img src="img/lambda-arch.png" style="width: 900px; border: none; box-shadow: none;">
+                        <h3>A new abstraction: <a href="https://www.cs.berkeley.edu/~matei/papers/2012/nsdi_spark.pdf">Resilient, Distributed Datasets</a></h3>
+                        <img src="img/rdds-explained.png" style="width: 800px; border: none; box-shadow: none;">
+                        <p style="font-size:50%"><b>Resilient Distributed Dataset:</b> An abstraction that enables efficient data reuse in distributed processing environments</p>
 					</section>
 					<section>
-						<img src="img/spark-architecture.jpg" style="width: 900px; border: none; box-shadow: none;">
-					</section>
-					<section>
-						<h3>Record breaking</h3>
+                        <h2>RDD focal points:</h2>
 						<ul>
-							<li>3x as fast</li>
-							<li>10x fewer machines</li>
-						</ul>
-						<img src="img/spark-100tb.png" style="width: 800px; border: none; box-shadow: none;">
+                            <li>Fault-tolerant, parallel data structure</li>
+                            <li>For interactive, iterative operations</li>
+                            <li>Immutable</li>
+                            <li>Transformations are logged and performed <i>lazily</i></li>
+                            <li>User-controlled persistence and partitioning</li>
+                        </ul>
 					</section>
 					<section>
-						<img src="img/spark-ecosystem.png" style="width: 800px; border: none; box-shadow: none;">
+                        <h2>Spark's implementation of RDDs:</h2>
+                        <ul>
+                            <li>Language-intergrated interface (functions inline, etc.)</li>
+                            <li>Runs inside a JVM to easily interact with Hadoop filesystem</li>
+                            <li>Statically typed for performance</li>
+                        </ul>
 					</section>
-					<section>
-						<img src="img/logo-java.png" style="width: 400px; border: none; box-shadow: none;">
-						<img src="img/scala-logo.png" style="width: 400px; border: none; box-shadow: none;">
-						<img src="img/python-logo-master.png" style="width: 400px; border: none; box-shadow: none;">
-					</section>
-				</section>
-
-
+                </section>
 
 				<section>
-					<section>
-						<img src="img/spark-logo.png" style="width: 400px; border: none; box-shadow: none;">
-						<br/>
-						<img src="img/scala-logo.png" style="width: 400px; border: none; box-shadow: none;">
-					</section>
-					<section>
-						<h2>Spark is written in Scala</h2>
-					</section>
-					<section>
-						<h2>Parallel Processing</h2>
-						<br/>
-						<p>data.par.map(_ * 2)</p>
-					</section>
-					<section>
-						<h2>Immutability</h2>
-						<br/>
-						<p>val cannotChange = List(1,2,3,4,5)</p>
-					</section>
-					<section>
-						<h2>Still JVM</h2>
-					</section>
-					<section>
-						<h2>Type Inference</h2>
-						<br/>
-						<p>val str = "I am definitely a String"</p>
-					</section>
-					<section>
-						<h2>Functional</h2>
-						<pre><code data-trim contenteditable>
+                    <section>
+                        <h2>Demo</h2>
+                    </section>
+                    <section>
+                        <h3>Questions before we get started?</h3>
+                    </section>
+                    
+                    <section>
+                        <h3>Getting started with Spark</h3>
+                        <ul style="font-size:80%">
+                            <li>Download the <a href="https://github.com/apache/spark">source from github</a> or <a href="http://spark.apache.org/downloads.html.">Apache</a> and run locally.</li>
+                            <li>Download the <a href="http://www.cloudera.com/content/cloudera/en/documentation/core/latest/topics/cloudera_quickstart_vm.html">Cloudera Distribution Hadoop 5 QuickStart Virtual Machine</a>. This requires a virtual machine player like VMWare or VirtualBox (Make sure VT-x is enabled in your BIOS). This runs Spark in a pseudo-distributed stand-alone mode and allows you to run it inside a Yarn container with some configuration changes. You also can run Spark locally out-of-the-box with all dependencies installed.</li>
+                            <li>Download the Hortonworks virtual machine. It works very similar to Cloudera's offering.</li>
+                        </ul>
+                    </section>
+                    
+                    <section>
+                        <h4>Launching Spark</h4>
+                        <pre><code data-trim contenteditable>
+>spark-shell
+                        </code></pre>
+                        <pre><code data-trim contenteditable>
+>pyspark
+                        </code></pre>
+                        <pre><code data-trim contenteditable>
+>spark-submit --class &#60;class_name> --master &#60;context_mode> \
+>&#60;jar_file> [args]
+                        </code></pre>
+                    </section>
+                
+                    <section>
+                        <h3>Interactive Spark</h3>
+                        </code></pre>
+                        <pre><code data-trim contenteditable>
+15/04/16 11:50:48 INFO SecurityManager: Changing view acls to: cloudera
+15/04/16 11:50:48 INFO SecurityManager: Changing modify acls to: cloudera
+15/04/16 11:50:48 INFO SecurityManager: SecurityManager: authentication disabled; ui acls disabled; users with view permissions: Set(cloudera); users with modify permissions: Set(cloudera)
+15/04/16 11:50:48 INFO HttpServer: Starting HTTP Server
+15/04/16 11:50:48 INFO Utils: Successfully started service 'HTTP class server' on port 43049.
+Welcome to
+   ____              __
+  / __/__  ___ _____/ /__
+ _\ \/ _ \/ _ `/ __/  '_/
+/___/ .__/\_,_/_/ /_/\_\   version 1.2.0
+   /_/
+
+Using Scala version 2.10.4 (Java HotSpot(TM) 64-Bit Server VM, Java 1.7.0_67)
+Type in expressions to have them evaluated.
+Type :help for more information.
+15/04/16 11:50:54 WARN Utils: Your hostname, quickstart.cloudera resolves to a loopback address: 127.0.0.1; using 10.0.2.15 instead (on interface eth0)
+15/04/16 11:50:54 WARN Utils: Set SPARK_LOCAL_IP if you need to bind to another address
+15/04/16 11:50:54 INFO SecurityManager: Changing view acls to: cloudera
+15/04/16 11:50:54 INFO SecurityManager: Changing modify acls to: cloudera
+15/04/16 11:50:54 INFO SecurityManager: SecurityManager: authentication disabled; ui acls disabled; users with view permissions: Set(cloudera); users with modify permissions: Set(cloudera)
+15/04/16 11:50:55 INFO Slf4jLogger: Slf4jLogger started
+15/04/16 11:50:55 INFO Remoting: Starting remoting
+15/04/16 11:50:55 INFO Remoting: Remoting started; listening on addresses :[akka.tcp://sparkDriver@10.0.2.15:51331]
+15/04/16 11:50:55 INFO Remoting: Remoting now listens on addresses: [akka.tcp://sparkDriver@10.0.2.15:51331]
+15/04/16 11:50:55 INFO Utils: Successfully started service 'sparkDriver' on port 51331.
+15/04/16 11:50:56 INFO SparkEnv: Registering MapOutputTracker
+15/04/16 11:50:56 INFO SparkEnv: Registering BlockManagerMaster
+15/04/16 11:50:56 INFO DiskBlockManager: Created local directory at /tmp/spark-local-20150416115056-a439
+15/04/16 11:50:56 INFO MemoryStore: MemoryStore started with capacity 265.4 MB
+15/04/16 11:50:56 INFO HttpFileServer: HTTP File server directory is /tmp/spark-cc9f46f6-5288-48b0-b106-ee9281b10156
+15/04/16 11:50:56 INFO HttpServer: Starting HTTP Server
+15/04/16 11:50:56 INFO Utils: Successfully started service 'HTTP file server' on port 41679.
+15/04/16 11:50:56 INFO Utils: Successfully started service 'SparkUI' on port 4040.
+15/04/16 11:50:56 INFO SparkUI: Started SparkUI at http://10.0.2.15:4040
+15/04/16 11:50:57 INFO AppClient$ClientActor: Connecting to master spark://quickstart.cloudera:7077...
+15/04/16 11:50:57 INFO SparkDeploySchedulerBackend: Connected to Spark cluster with app ID app-20150416115057-0001
+15/04/16 11:50:57 INFO AppClient$ClientActor: Executor added: app-20150416115057-0001/0 on worker-20150408095110-10.0.2.15-7078 (10.0.2.15:7078) with 2 cores
+15/04/16 11:50:57 INFO SparkDeploySchedulerBackend: Granted executor ID app-20150416115057-0001/0 on hostPort 10.0.2.15:7078 with 2 cores, 512.0 MB RAM
+15/04/16 11:50:57 INFO AppClient$ClientActor: Executor updated: app-20150416115057-0001/0 is now LOADING
+15/04/16 11:50:57 INFO AppClient$ClientActor: Executor updated: app-20150416115057-0001/0 is now RUNNING
+15/04/16 11:50:58 INFO NettyBlockTransferService: Server created on 40182
+15/04/16 11:50:58 INFO BlockManagerMaster: Trying to register BlockManager
+15/04/16 11:50:58 INFO BlockManagerMasterActor: Registering block manager 10.0.2.15:40182 with 265.4 MB RAM, BlockManagerId(<driver>, 10.0.2.15, 40182)
+15/04/16 11:50:58 INFO BlockManagerMaster: Registered BlockManager
+15/04/16 11:51:07 INFO EventLoggingListener: Logging events to hdfs://quickstart.cloudera:8020/user/spark/applicationHistory/app-20150416115057-0001
+15/04/16 11:51:13 INFO SparkDeploySchedulerBackend: SchedulerBackend is ready for scheduling beginning after reached minRegisteredResourcesRatio: 0.0
+15/04/16 11:51:14 INFO SparkILoop: Created spark context..
+Spark context available as sc.
+
+scala> 15/04/16 11:51:18 INFO SparkDeploySchedulerBackend: Registered executor: Actor[akka.tcp://sparkExecutor@10.0.2.15:47007/user/Executor#-876449197] with ID 0
+15/04/16 11:51:20 INFO BlockManagerMasterActor: Registering block manager 10.0.2.15:52204 with 265.4 MB RAM, BlockManagerId(0, 10.0.2.15, 52204)
+                        </code></pre>
+
+                        <pre><code data-trim contenteditable>
+scala> sc
+res38: org.apache.spark.SparkContext = org.apache.spark.SparkContext@5f4d088e
+                        </code></pre>
+                    </section>
+                    <section>
+                        <h3>Creating an RDD</h3>
+                        <pre><code data-trim contenteditable>
+scala> val rdd = sc.textFile("spark-input/boa-constrictor")
+                        </code></pre>
+                        <pre><code data-trim contenteditable>
+15/04/16 12:36:03 INFO MemoryStore: ensureFreeSpace(259918) called with curMem=2248344, maxMem=278302556
+15/04/16 12:36:03 INFO MemoryStore: Block broadcast_32 stored as values in memory (estimated size 253.8 KB, free 263.0 MB)
+15/04/16 12:36:04 INFO MemoryStore: ensureFreeSpace(21134) called with curMem=2508262, maxMem=278302556
+15/04/16 12:36:04 INFO MemoryStore: Block broadcast_32_piece0 stored as bytes in memory (estimated size 20.6 KB, free 263.0 MB)
+15/04/16 12:36:04 INFO BlockManagerInfo: Added broadcast_32_piece0 in memory on 10.0.2.15:40182 (size: 20.6 KB, free: 265.2 MB)
+15/04/16 12:36:04 INFO BlockManagerMaster: Updated info of block broadcast_32_piece0
+15/04/16 12:36:04 INFO SparkContext: Created broadcast 32 from textFile at &#60;console>:12
+rdd: org.apache.spark.rdd.RDD[String] = spark-input/boa-constrictor MappedRDD[40] at textFile at &#60;console>:12
+
+                        </code></pre>
+
+                        <pre><code data-trim contenteditable>
+scala> val silverstein = rdd.collect
+...
+silverstein: Array[String] = Array(
+    Im being swallered by a Boa Constrictor, a Boa Constrictor, a Boa Constrictor,
+    Im being swallered by a Boa Constrictor,
+    and I dont - like snakes - one bit!,
+    Oh no, he swallered my toe.,
+    Oh gee, he swallered my knee.,
+    Oh fiddle, he swallered my middle.,
+    Oh what a pest, he swallered my chest.,
+    Oh heck, he swallered my neck.,
+    Oh, dread, he swallered my - (BURP)
+)
+                        </code></pre>
+                    </section>
+                    <section>
+                        <h3>Transforming an RDD</h3>
+                        <pre><code data-trim contenteditable>
+val BoaConstrictor = rdd.filter(line => line.contains("Boa"))
+                        </code></pre>
+                        <pre><code data-trim contenteditable>
+BoaConstrictor.collect
+res39: Array[String] = Array(
+    Im being swallered by a Boa Constrictor, a Boa Constrictor, a Boa Constrictor,
+    Im being swallered by a Boa Constrictor
+)
+                        </code></pre>
+                    </section>
+
+                    <section>
+                        <h3>Acting on an RDD</h3>
+                        <pre><code data-trim contenteditable>
+val words = rdd.flatMap(line => line.split(" "))
+val counts = words.map(word => (word,1)).reduceByKey{case (x,y) => x+y}
+                        </code></pre>
+                        <pre><code data-trim contenteditable>
+counts.collect
+res40: Array[(String, Int)] = Array(
+    (don't,1), (pest,,1), (fiddle,,1), (one,1), (bit!,1), ((BURP),1),
+    (toe.,1), (Boa,4), (Constrictor,,1), (my,6), (what,1), (dread,,1),
+    (Constrictor,3), (heck,,1), (neck.,1), (swallered,8), (Oh,,1),
+    (a,5), (snakes,1), (no,,1), (I,1), (he,6), (Oh,5), (middle.,1),
+    (by,2), (-,3), (like,1), (I'm,2), (and,1), (chest.,1), (gee,,1), (being,2), (knee.,1)
+)
+                        </code></pre>
+                    </section>
+
+                    <section>
+                        <h3>Analysis using RDDs</h3>
+                        <pre><code data-trim contenteditable>
+val Boa = counts.filter(pair => pair._1.equals("Boa"))
+                        </code></pre>
+                        <pre><code data-trim contenteditable>
+Boa.collect
+res41: Array[(String, Int)] = Array((Boa,4))
+                        </code></pre>
+                    </section>
+
+
+                    <section>
+                    <h3>Java Example using Spark-submit</h3>
+                        <pre><code data-trim contenteditable>
+import java.util.Arrays;
+import java.util.List;
+import java.lang.Iterable;
+import scala.Tuple2;
+import org.apache.commons.lang.StringUtils;
+import org.apache.spark.api.java.*
+import org.apache.spark.api.java.function.*
+
+public class WordCount {
+  public static void main(String[] args) throws Exception {
+    String master = "local";
+    JavaSparkContext sc = new JavaSparkContext(
+      master, "wordcount", System.getenv("SPARK_HOME"), System.getenv("JARS"));
+    JavaRDD&#60;String> rdd = sc.textFile("spark-input/boa-constrictor");
+    JavaPairRDD&#60;String, Integer> counts = rdd.flatMap(
+      new FlatMapFunction&#60;String, String>() {
+        public Iterable&#60;String> call(String x) {
+          return Arrays.asList(x.split(" "));
+        }}).mapToPair(new PairFunction&#60;String, String, Integer>(){
+          public Tuple2&#60;String, Integer> call(String x){
+            return new Tuple2(x, 1);
+          }}).reduceByKey(new Function2&#60;Integer, Integer, Integer>(){
+              public Integer call(Integer x, Integer y){ return x+y;}});
+  counts.saveAsTextFile("output/boa-constrictor");
+  }
+}
+                        </code></pre>
+                        <pre><code data-trim contenteditable>
+>spark-submit --class WordCount --master spark://quickstart.cloudera:7077 \
+>spark-clt-demo.jar
+                        </code></pre>
+                    </section>
+
+
+                    <section>
+                        <h2>Questions?</h2>
+                    </section>
+				</section>
+                
+                <section>
+                    <section>
+                        <h2>Appendix: How do I learn Spark?</h2>
+                        <ul>
+                            <li><a href="http://shop.oreilly.com/product/0636920028512.do">Learning Spark</a></li>
+                            <li>Spark Summit 2014 Tutorial Videos</li>
+                    </section>
+                    <section>
+                        <iframe width="800" height="500" src="https://www.youtube.com/embed/VWeWViFCzzg?list=PLTPXxbhUt-YWSgAUhrnkyphnh0oKIT8-j" frameborder="0" allowfullscreen></iframe>
+                    </section>
+                    <section>
+                        <iframe width="800" height="500" src="https://www.youtube.com/embed/HG2Yd-3r4-M" frameborder="0" allowfullscreen></iframe>
+                    </section>
+                </section>
+                
+                <section>
+                    <section>
+                        <h2>Appendix: Scala</h2>
+                        <p style="font-size:50%">Content courtesy of David Der / <a href="https://twitter.com/davidder">@davidder</a></p>
+                    </section>
+                    <section>
+                        <h2>Functional</h2>
+                        <pre><code data-trim contenteditable>
 public List&lt;Product&gt; getProducts(List&lt;Order&gt; orders) {
 
     List&lt;Product&gt; products = new ArrayList&lt;Product&gt;();
 
     for (Order order : orders) {
         products.addAll(order.getProducts());
-    }
+        }
 
     return products;
 }
-						</code></pre>
-						<h3>Vs.</h3>
-					<pre><code data-trim contenteditable>
+                        </code></pre>
+                        <h3>Vs.</h3>
+                        <pre><code data-trim contenteditable>
 &nbsp;
-  def products = orders.flatMap(o => o.products)
+def products = orders.flatMap(o => o.products)
 &nbsp;
-					</code></pre>
-					</section>
-					<section>
-						<h3>Spark operations look<br/>awfully familiar...</h3>
-						<ul>
-							<li>map( { .. } )</li>
-							<li>filter( { .. } )</li>
-							<li>flatMap( { .. } )</li>
-							<li>reduceByKey( { .. } )</li>
-							<li>reduce( { .. } )</li>
-							<li>foreach( { .. } )</li>
-						</ul>
-					</section>
-				</section>
-
-				<section>
-					<h2>Java 7</h2>
-					<pre><code data-trim contenteditable>
+                        </code></pre>
+                    </section>
+                    <section>
+                        <h3>Spark operations look<br/>awfully familiar...</h3>
+                        <ul>
+                            <li>map( { .. } )</li>
+                            <li>filter( { .. } )</li>
+                            <li>flatMap( { .. } )</li>
+                            <li>reduceByKey( { .. } )</li>
+                            <li>reduce( { .. } )</li>
+                            <li>foreach( { .. } )</li>
+                        </ul>
+                    </section>
+                    
+                    
+                    <section>
+                        <h2>Java 7</h2>
+                        <pre><code data-trim contenteditable>
 JavaRDD&lt;String&gt; distFile = sc.textFile("README.md");
 
 // Map each line to multiple word
 JavaRDD&lt;String&gt; words = distFile.flatMap(
 
-new FlatMapFunction&lt;String, String&gt;() {
+    new FlatMapFunction&lt;String, String&gt;() {
 
-	public Iterable&lt;String&gt; call(String line) {
-		return Arrays.asList(line.split(" "));
-	}
+        public Iterable&lt;String&gt; call(String line) {
+            return Arrays.asList(line.split(" "));
+        }
 });
-					</code></pre>
-					<h2>Java 8</h2>
-					<pre><code data-trim contenteditable>
+                        </code></pre>
+                        <h2>Java 8</h2>
+                        <pre><code data-trim contenteditable>
 JavaRDD&lt;String&gt; distFile = sc.textFile("README.md");
 
 JavaRDD&lt;String&gt; words =
-	distFile.flatMap(line -> Arrays.asList(line.split(" ")));
-					</code></pre>
-				</section>
-
-				<section>
-					<h2>Questions?</h2>
-				</section>
-
-				<section>
-					<h2>Ok let's go do something.</h2>
-					<br/>
-					<p>http://spark.apache.org/docs/1.2.1/quick-start.html</p>
-					<p>https://github.com/apache/spark</p>
-				</section>
+distFile.flatMap(line -> Arrays.asList(line.split(" ")));
+                        </code></pre>
+                    </section>
+                </section>
 
 			</div>
 
