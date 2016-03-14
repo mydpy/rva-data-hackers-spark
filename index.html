@@ -43,17 +43,17 @@
 			<div class="slides">
 				<section>
 					<img src="img/spark-logo.png" style="width: 600px; border: none; box-shadow: none;">
-					<h2>Abstract Title</h2>
+					<h2>Analyzing Wikipedia Event Streams using Spark 2.0 and GraphX w/ Myles Baker</h2>
 					<p>
-						<small><a href="https://www.linkedin.com/in/mylesdanielbaker">Myles Baker / </a> <a href="http://www.captechconsulting.com/careers/why-captech">CapTech Consulting</a> / <a href="http://twitter.com/mydpy">@mydpy</a></small>
-						<br><small>Prabha Raman / <a href="https://www.capitalone.com/">Capital One</a> / <a href="http://twitter.com/twitter_handle">@twitter_handle</a></small>
+						<small><a href="https://www.linkedin.com/in/mylesdanielbaker">Myles Baker </a>/ <a href="http://www.captechconsulting.com/careers/why-captech">CapTech</a> / <a href="http://twitter.com/mydpy">@mydpy</a></small>
 					</p>
 				</section>
 
 				<section>
-					<img src="img/captech.png" style="width: 600px; border: none; box-shadow: none;">
-                    <img src="img/capital_one.jpg" style="width: 600px; border: none; box-shadow: none;">
+					<img src="img/captech.png" style="width: 800px; border: none; box-shadow: none; PADDING-LEFT: 5px; PADDING-RIGHT: 5px"><br>
+                    <img src="img/best-firms.png" style="width: 100px; border: none; box-shadow: none; PADDING-LEFT:50px; PADDING-RIGHT: 50px"><img src="img/inc5000.png" style="width: 100px; border: none; box-shadow: none; PADDING-LEFT:50px; PADDING-RIGHT: 50px"><img src="img/vault.png" style="width: 100px; border: none; box-shadow: none; PADDING-LEFT:50px; PADDING-RIGHT: 50px">
 				</section>
+                
                 
 
 				<section>
@@ -65,28 +65,21 @@
                         <h3><a href="https://spark.apache.org">Apache Spark</a> is a cluster computing platform designed to be <i>fast</i> and <i>general-purpose</i></h3>
                         
                         <ul>
-						<li><i>In-memory</i> computing capabilities deliver speed</li>
-                        <li>General execution model supports many diverse use cases</li>
-                        <li>Native APIs in Java, Scala, Python</li>
-                        <li>Supports batch and real-time analysis</li>
+						<li>Optimized for <i>in-memory</i> computing on large datasets</li>
+                        <li>General execution model supports batch and continuous applications</li>
+                        <li>Native APIs in Java, Scala, Python, and R</li>
+                        <li>Easy-to-use API and application integration</li>
+                        <li>Fast uptime for data engineering applications</li> 
+                        <li>Empowers analysts and stakeholders</li>
                         </ul>
 					</section>
-                    <section>
-                        <img src="img/logo-java.png" style="width: 400px; border: none; box-shadow: none;">
-                        <img src="img/scala-logo.png" style="width: 400px; border: none; box-shadow: none;">
-                        <img src="img/python-logo-master.png" style="width: 400px; border: none; box-shadow: none;">
+                    <section data-background-video="video/spark-stack-web.mov" 
+                            data-background-color="#000">
                     </section>
-					<section>
-						<img src="img/spark-stack.png" style="width: 600px; border: none; box-shadow: none;">
-					</section>
 				</section>
 				<section>
                     <section>
                         <h2>Why Spark?</h2>
-                    </section>
-                    <section>
-                        <h3>Spark is quickly becoming popular</h3>
-                        <iframe scrolling="no" style="border:none;" width="600" height="400" src="http://www.google.com/trends/fetchComponent?hl=en-US&q=apache+spark,+apache+hadoop&date=1/2010+65m&cmpt=q&tz&tz&content=1&cid=TIMESERIES_GRAPH_AVERAGES_CHART&export=5&w=600&h=400"></iframe>
                     </section>
 					<section>
 						<img src="img/hadoop-logo.jpeg" style="width: 600px; border: none; box-shadow: none;">
@@ -94,12 +87,60 @@
 					</section>
 					<section>
 						<h3>This paradigm unlocks intelligence on your data not previously possible</h3>
-                        <h4>...but is designed for batch applications. What about real-time?</h4>
+                        <h4>...but is designed for batch applications and disk I/O. What about real-time?</h4>
 					</section>
 					<section>
 						<h3>...that requires special tools and imposes resource demands</h3>
+                        <div style="width:100%;">
 						<img src="img/spark-vs-hadoop.png" style="width: 800px; border: none; box-shadow: none;">
-					</section>
+                    </div>
+                    </section>
+                    <section>
+                        <h3>Spark is generating a lot of interest</h3>
+                        <iframe scrolling="no" style="border:none;" width="600" height="400" src="http://www.google.com/trends/fetchComponent?hl=en-US&q=apache+spark,+apache+hadoop&date=1/2010+75m&cmpt=q&tz&tz&content=1&cid=TIMESERIES_GRAPH_AVERAGES_CHART&export=5&w=600&h=400"></iframe>
+                    </section>
+                    
+    				<section>
+    					<h3>The Open Source Community is Abandoning Hadoop MapReduce</h3>
+    					<br />
+    					<div style="width:100%;">
+    					<div style="float:left; width:50%;">
+    					<p>MapReduce</p>
+    					<img width="400" src="img/asf-hadoop-mr.png", style="border:1px;"> 
+    					</div>
+    					<div style="float:right; width:50%:">
+    					<p>Spark</p>
+    					<img width="400" src="img/asf-spark.png", style="border:1px;">
+    					</div>
+    					</div>					
+    				</section>
+                    
+    				<section>
+                        <h3>...And So is Cloudera</h3>
+    					<div style="width:100%;">
+    					<img width="1600" src="img/cloudera-1.png", style="border:1px;"> 
+    					</div>					
+    				</section>
+
+    				<section>
+    					<div style="width:100%;">
+    					<img width="1600" src="img/cloudera-2.png", style="border:1px;"> 
+    					</div>					
+    				</section>
+                    
+    				<section>
+    					<div style="width:100%;">
+    					<img width="1600" src="img/cloudera-3.png", style="border:1px;"> 
+    					</div>					
+    				</section>
+                    
+    				<section>
+                        <h3>...Oh, and IBM Invested 300 Million Too</h3>
+    					<div style="width:100%;">
+    					<img width="1600" src="img/IBM-1.png", style="border:1px;"> 
+    					</div>					
+    				</section>
+                    
                     <section>
                         <h3>How fast is Spark?</h3>
                         <ul>
@@ -108,14 +149,9 @@
                         </ul>
                         <img src="img/spark-100tb.png" style="width: 800px; border: none; box-shadow: none;">
                     </section>
-                    <section>
-                        <h3>...but may not replace Hadoop yet</h3>
-                        <ul>
-                            <li>Hadoop may be better if data spills into memory</li>
-                            <li>Spark staffing can be more costly than Hadoop</li>
-                            <li>Spark security is in its infancy</li>
-                        </ul>
-                    </section>
+
+                    
+
 				</section>
 
                 <section>
@@ -145,6 +181,25 @@
                             <li>Statically typed for performance</li>
                         </ul>
 					</section>
+					<section>
+                        <h2>What's New in Spark 2.0?</h2>
+                        <ul>
+                            <li>Tungsten Enhancements
+                                <ul>
+                                    <li>Enhancements to internal memory management</li>
+                                    <li><a href="https://issues.apache.org/jira/browse/SPARK-12785">SPARK-12785</a></li>
+                                    <li><a href="https://issues.apache.org/jira/browse/SPARK-8641">SPARK-8641</a></li>
+                                </ul></li>
+                            <li>Structured Streaming
+                                <ul>
+                                    <li>Streaming DataFrame for Continuous Applications</li>
+                                    <li><a href="https://issues.apache.org/jira/browse/SPARK-8360">SPARK-8360</a></li>
+                                </ul></li>
+                            <li>Whole-stage Code Generation</li>
+                            <li>Optimized input/output using Parquet (columnar data storage format)</li>
+                            <li>Translations between Dataframes (Spark 1.3) and Datasets (Spark 1.6)</li>
+                        </ul>
+					</section>
                 </section>
 
 				<section>
@@ -158,9 +213,8 @@
                     <section>
                         <h3>Getting started with Spark</h3>
                         <ul style="font-size:80%">
-                            <li>Download the <a href="https://github.com/apache/spark">source from github</a> or <a href="http://spark.apache.org/downloads.html.">Apache</a> and run locally.</li>
-                            <li>Download the <a href="http://www.cloudera.com/content/cloudera/en/documentation/core/latest/topics/cloudera_quickstart_vm.html">Cloudera Distribution Hadoop 5 QuickStart Virtual Machine</a>. This requires a virtual machine player like VMWare or VirtualBox (Make sure VT-x is enabled in your BIOS). This runs Spark in a pseudo-distributed stand-alone mode and allows you to run it inside a Yarn container with some configuration changes. You also can run Spark locally out-of-the-box with all dependencies installed.</li>
-                            <li>Download the Hortonworks virtual machine. It works very similar to Cloudera's offering.</li>
+                            <li>Download the <a href="https://github.com/mydpy/rva-data-hackers-spark-demo">RVA Data Hackers Github Repository</a>.</li>
+                            <li>Follow the instructions in README.md</li>
                         </ul>
                     </section>
                     
@@ -243,7 +297,7 @@ res38: org.apache.spark.SparkContext = org.apache.spark.SparkContext@5f4d088e
                     <section>
                         <h3>Creating an RDD</h3>
                         <pre><code data-trim contenteditable>
-scala> val rdd = sc.textFile("spark-input/boa-constrictor")
+scala> val rdd = sc.textFile("intro/data/boa-constrictor")
                         </code></pre>
                         <pre><code data-trim contenteditable>
 15/04/16 12:36:03 INFO MemoryStore: ensureFreeSpace(259918) called with curMem=2248344, maxMem=278302556
@@ -315,7 +369,79 @@ Boa.collect
 res41: Array[(String, Int)] = Array((Boa,4))
                         </code></pre>
                     </section>
+                    
+					<section>
+                        <h3>Spark SQL: An Analyst's Best Friend</h2>
+                        <pre><code data-trim contenteditable>
+val df = sqlContext.read.text("intro/data/boa-constrictor")
+df.registerTempTable("df")
+                        </code></pre>
+            </section>
+            <section>
+                        <pre><code data-trim contenteditable>
+sqlContext.sql("select * from df where value like '%Boa%'").show()
+                        </code></pre>
+                        <pre><code data-trim contenteditable>
++--------------------+
+|               value|
++--------------------+
+|Im being swallere...|
+|Im being swallere...|
++--------------------+
+                        </code></pre>
+                        <pre><code data-trim contenteditable>
+sqlContext.sql("select * from df where value like '%Boa%'").take(10)
+                        </code></pre>
 
+                        <pre><code data-trim contenteditable>
+res24: Array[org.apache.spark.sql.Row] = Array(
+    [Im being swallered by a Boa Constrictor, a Boa Constrictor, a Boa Constrictor,], 
+    [Im being swallered by a Boa Constrictor,])
+                        </code></pre>
+                    </section>
+                    <section>
+                        <pre><code data-trim contenteditable>
+val words = df.flatMap(row => row.toString.split(" "))
+    .map(word => (word,1))
+words.registerTempTable("words")
+                        </code></pre>
+            </section>
+            <section>
+                        <pre><code data-trim contenteditable>
+sqlContext.sql("""
+    SELECT _1, count(*)
+        FROM words 
+        WHERE _1 = 'Boa'
+        GROUP BY _1 
+        ORDER BY count(*) DESC
+""").show()
+                        </code></pre>
+                        <pre><code data-trim contenteditable>
++---+--------+
+| _1|count(1)|
++---+--------+
+|Boa|       4|
++---+--------+
+                        </code></pre>
+            </section>
+            <section>
+                        <pre><code data-trim contenteditable>
+sqlContext.sql("""
+    SELECT _1, sum(_2)
+        FROM words 
+        WHERE _1 = 'Boa'
+        GROUP BY _1 
+        ORDER BY count(_2) DESC
+""").show()
+                        </code></pre>
+                        <pre><code data-trim contenteditable>
++---+-------+
+| _1|sum(_2)|
++---+-------+
+|Boa|      4|
++---+-------+
+                        </code></pre>
+                    </section>
 
                     <section>
                     <h3>Java Example using Spark-submit</h3>
@@ -348,14 +474,14 @@ public class WordCount {
 }
                         </code></pre>
                         <pre><code data-trim contenteditable>
->spark-submit --class WordCount --master spark://quickstart.cloudera:7077 \
->spark-clt-demo.jar
+>spark-submit --class WordCount --master local \
+>spark-demo.jar
                         </code></pre>
                     </section>
 
 
                     <section>
-                        <h2>Questions?</h2>
+                        <h2>Now, it's time for GraphX</h2>
                     </section>
 				</section>
                 
@@ -364,9 +490,12 @@ public class WordCount {
                         <h2>Appendix: How do I learn Spark?</h2>
                         <ul>
                             <li><a href="http://shop.oreilly.com/product/0636920028512.do">Learning Spark</a></li>
-                            <li>Spark Summit 2014 Tutorial Videos</li>
+                            <li><a href="http://go.databricks.com/databricks-community-edition-beta-waitlist">Databricks Community Edition Beta Wishlist</a></li>
+                            <li><a href="https://www.edx.org/course/big-data-analysis-spark-uc-berkeleyx-cs110x">Big Data Analysis with Spark (Included in Databricks)</a></li>
+                            <li>Spark Summit Sessions and Tutorial Videos</li>
                     </section>
                     <section>
+                        <h3>YouTube is Great (Find Newer Videos)</h3>
                         <iframe width="800" height="500" src="https://www.youtube.com/embed/VWeWViFCzzg?list=PLTPXxbhUt-YWSgAUhrnkyphnh0oKIT8-j" frameborder="0" allowfullscreen></iframe>
                     </section>
                     <section>
