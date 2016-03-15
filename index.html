@@ -202,7 +202,8 @@
 					</section>
                 </section>
 
-				<section>
+				<!--SCALA
+                <section>
                     <section>
                         <h2>Demo</h2>
                     </section>
@@ -292,6 +293,10 @@ scala> 15/04/16 11:51:18 INFO SparkDeploySchedulerBackend: Registered executor: 
                         <pre><code data-trim contenteditable>
 scala> sc
 res38: org.apache.spark.SparkContext = org.apache.spark.SparkContext@5f4d088e
+                        </code></pre>
+                        <pre><code data-trim contenteditable>
+In [1]: sc
+Out[1]: <pyspark.context.SparkContext at 0x10cae8e10>
                         </code></pre>
                     </section>
                     <section>
@@ -478,12 +483,335 @@ public class WordCount {
 >spark-demo.jar
                         </code></pre>
                     </section>
+				</section>-->
 
+				<!--PYTHON-->
+                <section>
+                    <section>
+                        <h2>Demo</h2>
+                    </section>
+                    <section>
+                        <h3>Questions before we get started?</h3>
+                    </section>
+                    
+                    <section>
+                        <h3>Getting started with Spark</h3>
+                        <ul style="font-size:80%">
+                            <li>Download the <a href="https://github.com/mydpy/rva-data-hackers-spark-demo">RVA Data Hackers Github Repository</a>.</li>
+                            <li>Follow the instructions in README.md</li>
+                        </ul>
+                    </section>
+                    
+                    <section>
+                        <h4>Launching Spark</h4>
+                        <pre><code data-trim contenteditable>
+>spark-shell
+                        </code></pre>
+                        <pre><code data-trim contenteditable>
+>pyspark
+                        </code></pre>
+                        <pre><code data-trim contenteditable>
+>spark-submit --class &#60;class_name> --master &#60;context_mode> \
+>&#60;jar_file> [args]
+                        </code></pre>
+                    </section>
+                
+                    <section>
+                        <h3>Interactive Spark</h3>
+                        </code></pre>
+                        <pre><code data-trim contenteditable>
+16/03/15 09:20:05 INFO Utils: Successfully started service 'SparkUI' on port 4043.
+16/03/15 09:20:05 INFO SparkUI: Bound SparkUI to 0.0.0.0, and started at http://192.168.23.80:4043
+16/03/15 09:20:05 INFO Executor: Starting executor ID driver on host localhost
+16/03/15 09:20:05 INFO Utils: Successfully started service 'org.apache.spark.network.netty.NettyBlockTransferService' on port 57673.
+16/03/15 09:20:05 INFO NettyBlockTransferService: Server created on 57673
+16/03/15 09:20:05 INFO BlockManagerMaster: Trying to register BlockManager
+16/03/15 09:20:05 INFO BlockManagerMasterEndpoint: Registering block manager localhost:57673 with 511.1 MB RAM, BlockManagerId(driver, localhost, 57673)
+16/03/15 09:20:05 INFO BlockManagerMaster: Registered BlockManager
+Welcome to
+      ____              __
+     / __/__  ___ _____/ /__
+    _\ \/ _ \/ _ `/ __/  '_/
+   /__ / .__/\_,_/_/ /_/\_\   version 2.0.0-SNAPSHOT
+      /_/
+
+Using Python version 2.7.10 (default, Jul 14 2015 19:46:27)
+SparkContext available as sc, SQLContext available as sqlContext.
+                        </code></pre>
+
+                        <pre><code  class="python" data-trim contenteditable>
+In [1]: sc
+Out[1]: <pyspark.context.SparkContext at 0x10cae8e10>
+                        </code></pre>
+                    </section>
+                    <section>
+                        <h3>Creating an RDD</h3>
+                        <pre><code  class="python" data-trim contenteditable>
+rdd = sc.textFile("intro/data/boa-constrictor")
+                        </code></pre>
+                        <pre><code  class="python" data-trim contenteditable>
+16/03/15 09:21:49 INFO MemoryStore: Block broadcast_0 stored as values in memory (estimated size 107.7 KB, free 107.7 KB)
+16/03/15 09:21:49 INFO MemoryStore: Block broadcast_0_piece0 stored as bytes in memory (estimated size 10.2 KB, free 117.8 KB)
+16/03/15 09:21:49 INFO BlockManagerInfo: Added broadcast_0_piece0 in memory on localhost:57673 (size: 10.2 KB, free: 511.1 MB)
+16/03/15 09:21:49 INFO SparkContext: Created broadcast 0 from textFile at NativeMethodAccessorImpl.java:-2
+                        </code></pre>
+
+                        <pre><code  class="python" data-trim contenteditable>
+silverstein = rdd.collect()
+...
+[u'Im being swallered by a Boa Constrictor, a Boa Constrictor, a Boa Constrictor,',
+ u'Im being swallered by a Boa Constrictor,',
+ u'and I dont - like snakes - one bit!,',
+ u'Oh no, he swallered my toe.,',
+ u'Oh gee, he swallered my knee.,',
+ u'Oh fiddle, he swallered my middle.,',
+ u'Oh what a pest, he swallered my chest.,',
+ u'Oh heck, he swallered my neck.,',
+ u'Oh, dread, he swallered my - (BURP)']
+                        </code></pre>
+                    </section>
+                    <section>
+                        <h3>Transforming an RDD</h3>
+                        <pre><code  class="python" data-trim contenteditable>
+BoaConstrictor = rdd.filter(lambda line: "Boa" in line)
+                        </code></pre>
+                        <pre><code  class="python" data-trim contenteditable>
+BoaConstrictor.collect()
+Out[16]: 
+[u'Im being swallered by a Boa Constrictor, a Boa Constrictor, a Boa Constrictor,',
+ u'Im being swallered by a Boa Constrictor,']
+                        </code></pre>
+                    </section>
 
                     <section>
-                        <h2>Now, it's time for GraphX</h2>
+                        <h3>Acting on an RDD</h3>
+                        <pre><code  class="python" data-trim contenteditable>
+words = rdd.flatMap(lambda line: line.split(" "))
+counts = words.map(lambda word:(word,1)).reduceByKey(lambda x,y: x+y)
+                        </code></pre>
+                        <pre><code  class="python" data-trim contenteditable>
+counts.collect()
+Out[23]: 
+[(u'a', 5),
+ (u'and', 1),
+ (u'what', 1),
+ (u'(BURP)', 1),
+ (u'being', 2),
+ (u'heck,', 1),
+ (u'chest.,', 1),
+ (u'-', 3),
+ (u'Constrictor,', 4),
+ (u'I', 1),
+ (u'Im', 2),
+ (u'swallered', 8),
+ (u'Oh,', 1),
+ (u'no,', 1),
+ (u'dread,', 1),
+ (u'my', 6),
+ (u'knee.,', 1),
+ (u'like', 1),
+ (u'snakes', 1),
+ (u'toe.,', 1),
+ (u'Oh', 5),
+ (u'neck.,', 1),
+ (u'pest,', 1),
+ (u'one', 1),
+ (u'fiddle,', 1),
+ (u'middle.,', 1),
+ (u'bit!,', 1),
+ (u'gee,', 1),
+ (u'Boa', 4),
+ (u'he', 6),
+ (u'by', 2),
+ (u'dont', 1)]
+                        </code></pre>
+                    </section>
+
+                    <section>
+                        <h3>Analysis using RDDs</h3>
+                        <pre><code  class="python" data-trim contenteditable>
+Boa = counts.filter(lambda pair: pair[0] == "Boa")
+                        </code></pre>
+                        <pre><code  class="python" data-trim contenteditable>
+Boa.collect()
+Out[26]: [(u'Boa', 4)]
+                        </code></pre>
+                    </section>
+                    
+					<section>
+                        <h3>Spark SQL: An Analyst's Best Friend</h2>
+                        <pre><code  class="python" data-trim contenteditable>
+df = sqlContext.read.text("intro/data/boa-constrictor")
+df.registerTempTable("df")
+                        </code></pre>
+            </section>
+            <section>
+                        <pre><code  class="python" data-trim contenteditable>
+sqlContext.sql("select * from df where value like '%Boa%'").show()
+                        </code></pre>
+                        <pre><code data-trim contenteditable>
++--------------------+
+|               value|
++--------------------+
+|Im being swallere...|
+|Im being swallere...|
++--------------------+
+                        </code></pre>
+                        <pre><code class="python" data-trim contenteditable>
+sqlContext.sql("select * from df where value like '%Boa%'").take(10)
+                        </code></pre>
+
+                        <pre><code class="python" data-trim contenteditable>
+Out[30]: 
+[Row(value=u'Im being swallered by a Boa Constrictor, a Boa Constrictor, a Boa Constrictor,'),
+ Row(value=u'Im being swallered by a Boa Constrictor,')]
+                        </code></pre>
+                    </section>
+                    <section>
+                        <pre><code class="python" data-trim contenteditable>
+words = df.rdd.flatMap(
+        lambda row: str(row.asDict()['value'])\
+        .split(" "))\
+        .map(lambda word: (word,1))
+words.toDF().registerTempTable("words")
+                        </code></pre><br>
+                        Note: DataSet not yet supported in PySpark
+            </section>
+            <section>
+                        <pre><code  class="python" data-trim contenteditable>
+sqlContext.sql("""
+    SELECT _1, count(*)
+        FROM words 
+        WHERE _1 = 'Boa'
+        GROUP BY _1 
+        ORDER BY count(*) DESC
+""").show()
+                        </code></pre>
+                        <pre><code  class="python" data-trim contenteditable>
++---+--------+
+| _1|count(1)|
++---+--------+
+|Boa|       4|
++---+--------+
+                        </code></pre>
+            </section>
+            <section>
+                        <pre><code  class="python" data-trim contenteditable>
+sqlContext.sql("""
+    SELECT _1, sum(_2)
+        FROM words 
+        WHERE _1 = 'Boa'
+        GROUP BY _1 
+        ORDER BY count(_2) DESC
+""").show()
+                        </code></pre>
+                        <pre><code  class="python" data-trim contenteditable>
++---+-------+
+| _1|sum(_2)|
++---+-------+
+|Boa|      4|
++---+-------+
+                        </code></pre>
+                    </section>
+
+                    <section>
+                    <h3>Java Example using Spark-submit</h3>
+                        <pre><code  class="java" data-trim contenteditable>
+import java.util.Arrays;
+import java.util.List;
+import java.lang.Iterable;
+import scala.Tuple2;
+import org.apache.commons.lang.StringUtils;
+import org.apache.spark.api.java.*
+import org.apache.spark.api.java.function.*
+
+public class WordCount {
+  public static void main(String[] args) throws Exception {
+    String master = "local";
+    JavaSparkContext sc = new JavaSparkContext(
+      master, "wordcount", System.getenv("SPARK_HOME"), System.getenv("JARS"));
+    JavaRDD&#60;String> rdd = sc.textFile("spark-input/boa-constrictor");
+    JavaPairRDD&#60;String, Integer> counts = rdd.flatMap(
+      new FlatMapFunction&#60;String, String>() {
+        public Iterable&#60;String> call(String x) {
+          return Arrays.asList(x.split(" "));
+        }}).mapToPair(new PairFunction&#60;String, String, Integer>(){
+          public Tuple2&#60;String, Integer> call(String x){
+            return new Tuple2(x, 1);
+          }}).reduceByKey(new Function2&#60;Integer, Integer, Integer>(){
+              public Integer call(Integer x, Integer y){ return x+y;}});
+  counts.saveAsTextFile("output/boa-constrictor");
+  }
+}
+                        </code></pre>
+                        <pre><code data-trim contenteditable>
+>spark-submit --class WordCount --master local \
+>spark-demo.jar
+                        </code></pre>
                     </section>
 				</section>
+                
+                <section>
+                    <section>
+                        <h2>Introduction to <a href="https://spark.apache.org/docs/latest/graphx-programming-guide.html">GraphX</a></h1>
+                    </section>
+                    <section data-background="img/digraph.png">
+                    </section>
+                    <section>
+                        <h3>About GraphX</h3>
+                        <ul>
+                            <li>Only Scala API is Supported</li>
+                            <li>Python Support Tracking in <a href="https://issues.apache.org/jira/browse/SPARK-3789">SPARK-3789</a>
+                            <li><a href="https://github.com/graphframes/graphframes">Graph Frames</a> (GraphX on Dataframes) project will replace GraphX</a>
+                            <li><a href="http://graphframes.github.io/">Graph Frames Documentation</a>
+                        </ul>
+                        <p>Significant overlap in API usage, <br>but Graph Frames is still in development. </p>
+                    </section>
+                    <section>
+                        <h3>Key Terms</h3>
+                        <div style ="height:100%">
+                            <div style="height:50%">
+        					<div style="width:100%;">
+            					<div style="float:left; width:33%;">
+                					<b><p>Vertex</p></b>
+            					</div>
+            					<div style="float:right; width:66%;">
+                                    <div style="float:left; width:50%;">
+                					<b><p>Edge</p></b>
+                                    </div>
+                                    <div style="float:right; width:50%;">
+                					<b><p>Property Graph</p></b>
+                                    </div>
+            					</div>
+                            </div>
+                        </div>
+                        <div style="height:50%">
+                            <div style="width:100%">
+                                <div style="width:25%;float:left"></div>
+                                <div style="width:75%; float:right">
+                                    <div style="width:66%; float:left">
+                                        <pre><code  class="scala" data-trim contenteditable>
+class Graph[VD, ED] {
+  val vertices: VertexRDD[VD]
+  val edges: EdgeRDD[ED]
+}
+                                        </code></pre></div>
+                                    <div style="width:33%;float:right"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        </div>
+                </section>
+
+                    <section>
+                        <h3>Relationship between Property Graph, Vertex Table, and Edge Table</h3>
+    					<div style="width:100%;">
+    					<img width="1600" src="img/property_graph.png", style="border:1px;"> 
+    					</div>
+                    </section>
+                    
+                </section>
                 
                 <section>
                     <section>
@@ -510,7 +838,7 @@ public class WordCount {
                     </section>
                     <section>
                         <h2>Functional</h2>
-                        <pre><code data-trim contenteditable>
+                        <pre><code  class="java"  data-trim contenteditable>
 public List&lt;Product&gt; getProducts(List&lt;Order&gt; orders) {
 
     List&lt;Product&gt; products = new ArrayList&lt;Product&gt;();
